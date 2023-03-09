@@ -12,7 +12,7 @@ if (empty($r_tampil_anggota['foto']) or ($r_tampil_anggota['foto'] == '-')) {
     $foto = $r_tampil_anggota['foto'];
 }
 ?>
-<div id="label-page">
+<div class="nmHalaman">
     <h3>Edit Data Anggota</h3>
 </div>
 <div id="content">
@@ -27,15 +27,15 @@ if (empty($r_tampil_anggota['foto']) or ($r_tampil_anggota['foto'] == '-')) {
 
             </tr>
             <tr>
-                <td class="label-formulir">ID Anggota</td>
+                <td class="label-formulir">ID Anggota<span style="color:red">*</span></td>
                 <td class="isian-formulir"><input type="text" name="id_anggota" value="<?php echo $r_tampil_anggota['idanggota']; ?>" readonly="readonly" class="text-input isian-formulir isian-formulir-border warna-formulir-disabled"></td>
             </tr>
             <tr>
-                <td class="label-formulir">Nama</td>
+                <td class="label-formulir">Nama<span style="color:red">*</span></td>
                 <td class="isian-formulir"><input type="text" name="nama" value="<?php echo $r_tampil_anggota['nama']; ?>" class="text-input isian-formulir isian-formulir-border"></td>
             </tr>
             <tr>
-                <td>Jenis Kelamin</td>
+                <td>Jenis Kelamin<span style="color:red">*</span></td>
                 <td>
                     <?php
                     if ($r_tampil_anggota['jeniskelamin'] == 'Pria') {
@@ -49,7 +49,7 @@ if (empty($r_tampil_anggota['foto']) or ($r_tampil_anggota['foto'] == '-')) {
                 </td>
             </tr>
             <tr>
-                <td>Alamat</td>
+                <td>Alamat<span style="color:red">*</span></td>
                 <td>
                     <textarea type="text" class="inputAnggota" name="alamat" id="alamat" cols="75" rows="5"><?php echo $r_tampil_anggota['alamat']; ?></textarea>
                 </td>

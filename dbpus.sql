@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 09, 2023 at 11:38 AM
+-- Generation Time: Mar 09, 2023 at 02:21 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.2
 
@@ -66,7 +66,33 @@ INSERT INTO `tbanggota` (`idanggota`, `nama`, `jeniskelamin`, `alamat`, `status`
 ('AG002', 'Aini Rahmawati', 'Wanita', 'Jl. Anggrek No.45', 'Tidak Meminjam', 'AG002.png'),
 ('AG003', 'Rudi Hartono', 'Pria', 'Jl. Manggis No.39', 'Tidak Meminjam', '-'),
 ('AG004', 'Agus Wardoyo', 'Pria', 'Jl.Cempedak No.88', 'Tidak Meminjam', 'AG004.png'),
-('AG005', 'Razi', 'Pria', 'Banjarmasin', 'Tidak Meminjam', 'AG005.png');
+('AG005', 'Razi', 'Pria', 'Banjarmasin', 'Tidak Meminjam', 'AG005.png'),
+('AG006', 'razi', 'Pria', 'barabai', 'Tidak Meminjam', '-');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbbuku`
+--
+
+CREATE TABLE `tbbuku` (
+  `idbuku` varchar(5) NOT NULL,
+  `judul` varchar(30) NOT NULL,
+  `foto` varchar(35) NOT NULL,
+  `pengarang` varchar(30) NOT NULL,
+  `penerbit` varchar(50) NOT NULL,
+  `tahun` year(4) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `tbbuku`
+--
+
+INSERT INTO `tbbuku` (`idbuku`, `judul`, `foto`, `pengarang`, `penerbit`, `tahun`) VALUES
+('BK001', 'Laskar Pelangi', 'BK001.jpg', 'Andrea Hirata', 'Bentang Pustaka', 2005),
+('BK002', 'Cinta Brontosaurus', 'BK002.jpg', 'Raditya Dika', 'GagasMedia', 2016),
+('BK003', 'Ubur-Ubur Lembur', 'BK003.jpeg', 'Raditya Dika', 'GagasMedia', 2018),
+('BK004', 'Bumi', '-', 'Tere Liye', 'Gramedia Pustaka Utama (‎Jakarta)', 2014);
 
 --
 -- Indexes for dumped tables
@@ -83,6 +109,12 @@ ALTER TABLE `admin`
 --
 ALTER TABLE `tbanggota`
   ADD PRIMARY KEY (`idanggota`);
+
+--
+-- Indexes for table `tbbuku`
+--
+ALTER TABLE `tbbuku`
+  ADD PRIMARY KEY (`idbuku`);
 
 --
 -- AUTO_INCREMENT for dumped tables

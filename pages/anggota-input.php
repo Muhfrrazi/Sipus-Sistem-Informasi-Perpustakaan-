@@ -7,15 +7,15 @@
             <td><input type="file" class="text-input" accept="image/png, image/gif, image/jpeg" name="foto" id="foto"></td>
         </tr>
         <tr>
-            <td>ID Anggota</td>
+            <td>ID Anggota<span style="color:red">*</span></td>
             <td><input type="text" class="text-input" name="id_anggota" id="id_anggota" required></td>
         </tr>
         <tr>
-            <td>Nama</td>
+            <td>Nama<span style="color:red">*</span></td>
             <td><input type="text" class="text-input" name="nama" id="nama" required></td>
         </tr>
         <tr>
-            <td><label for="jkel">Jenis Kelamin</label></td>
+            <td><label for="jkel">Jenis Kelamin<span style="color:red">*</span></label></td>
             <td>
                 <input type="radio" id="jkel" name="jenis_kelamin" value="Pria" style="margin :0 10px 10px 0" required>Pria <br>
                 <input type="radio" id="jkel" name="jenis_kelamin" value="Wanita" style="margin :10px 10px 0 0" required>Wanita
@@ -23,7 +23,7 @@
             <td></td>
         </tr>
         <tr>
-            <td>Alamat</td>
+            <td>Alamat<span style="color:red">*</span></td>
             <td><textarea type="text" class="inputAnggota" name="alamat" id="alamat" cols="20" rows="5" required></textarea></td>
         </tr>
         <tr>

@@ -41,7 +41,7 @@ if (!isset($_SESSION['id_admin'])) {
                 <li><a href="index.php">Beranda</a></li>
                 <li class="nav-title">Entry Data dan Transaksi</li>
                 <li><a href="index.php?p=anggota">Data Anggota</a></li>
-                <li><a href="#">Data Buku</a></li>
+                <li><a href="index.php?p=buku">Data Buku</a></li>
                 <li><a href="#">Transaksi Peminjaman</a></li>
                 <li class="nav-title">Laporan</li>
                 <li><a href="#">Laporan Data Anggota</a></li>
@@ -56,6 +56,12 @@ if (!isset($_SESSION['id_admin'])) {
                 include './pages/anggota-input.php';
             } elseif (isset($_GET['p']) && $_GET['p'] == 'anggota-edit') {
                 include './pages/anggota-edit.php';
+            } elseif (isset($_GET['p']) && $_GET['p'] == 'buku') {
+                include './pages/buku.php';
+            } elseif (isset($_GET['p']) && $_GET['p'] == 'buku-input') {
+                include './pages/buku-input.php';
+            } elseif (isset($_GET['p']) && $_GET['p'] == 'buku-edit') {
+                include './pages/buku-edit.php';
             } else {
 
                 echo '<p class="nmHalaman">Beranda</p>
@@ -68,7 +74,14 @@ if (!isset($_SESSION['id_admin'])) {
     <footer>
         <p>Sistem Informasi Perpustakaan (Sipus) | Praktikum</p>
     </footer>
-
+    <script type="text/javascript">
+        $(function() {
+            $("#date").datepicker({
+                dateFormat: 'yy'
+            });
+        });
+    </script>
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.1.min.js"></script>
 </body>
 
 </html>

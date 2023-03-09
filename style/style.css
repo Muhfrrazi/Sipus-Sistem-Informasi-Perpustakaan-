@@ -219,7 +219,9 @@ input a:hover {
   margin: 10px 0;
   width: 100%;
 }
-
+.ui-datepicker-calendar {
+  display: none;
+}
 #tabel-tampil tr:nth-child(odd) {
   background-color: #f1f1f1;
 }

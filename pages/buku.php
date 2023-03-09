@@ -1,8 +1,7 @@
-<p class="nmHalaman">Tampil Data Anggota</p>
+<p class="nmHalaman">Tampil Data Buku</p>
 <div id="content">
     <p id="tombol-tambah-container">
-        <a href="index.php?p=anggota-input" class="tombol tombol-tambah">Tambah Anggota</a>
-        <a href="./pages/cetak.php" target="_blank" class="tombol tombol-cetak-halaman">Cetak</a>
+        <a href="index.php?p=buku-input" class="tombol tombol-tambah">Tambah Buku</a>
     </p>
 
     <form class="form-inline" method="POST">
@@ -16,11 +15,12 @@
     <table id="tabel-tampil">
         <tr>
             <th id="label-tampil-no">No</td>
-            <th>ID Anggota</th>
-            <th>Nama</th>
+            <th>ID Buku</th>
+            <th>Judul</th>
             <th>Foto</th>
-            <th>Jenis Kelamin</th>
-            <th>Alamat</th>
+            <th>Pengarang</th>
+            <th>Penerbit</th>
+            <th>Tahun</th>
             <th id="label-opsi">Opsi</th>
         </tr>
 
@@ -38,47 +38,46 @@
         if ($_SERVER['REQUEST_METHOD'] == "POST") {
             $pencarian = trim(mysqli_real_escape_string($db, $_POST['pencarian']));
             if ($pencarian != '') {
-                $sql = "SELECT * FROM tbanggota WHERE nama LIKE '%$pencarian%'
-                            OR idanggota LIKE '%$pencarian%'
-                            OR alamat LIKE '%$pencarian%'
-                            OR jeniskelamin LIKE '%$pencarian%'";
+                $sql = "SELECT * FROM tbbuku WHERE judul LIKE '%$pencarian%'
+                            OR idbuku LIKE '%$pencarian%'
+                            OR pengarang LIKE '%$pencarian%'
+                            OR penerbit LIKE '%$pencarian%'
+                            OR tahun LIKE '%$pencarian%'";
                 $query = $sql;
                 $queryJml = $sql;
             } else {
-                $query = "SELECT * FROM tbanggota LIMIT $posisi, $batas";
-                $queryJml = "SELECT * FROM tbanggota";
+                $query = "SELECT * FROM tbbuku LIMIT $posisi, $batas";
+                $queryJml = "SELECT * FROM tbbuku";
                 $no = $posisi * 1;
             }
         } else {
-            $query = "SELECT * FROM tbanggota LIMIT $posisi, $batas";
-            $queryJml = "SELECT * FROM tbanggota";
+            $query = "SELECT * FROM tbbuku LIMIT $posisi, $batas";
+            $queryJml = "SELECT * FROM tbbuku";
             $no = $posisi * 1;
         }
 
-        $q_tampil_anggota = mysqli_query($db, $query);
-        if (mysqli_num_rows($q_tampil_anggota) > 0) {
-            while ($r_tampil_anggota = mysqli_fetch_array($q_tampil_anggota)) {
-                if (empty($r_tampil_anggota['foto']) or ($r_tampil_anggota['foto'] == '-'))
-                    $foto = "admin-no-photo.png";
+        $q_tampil_buku = mysqli_query($db, $query);
+        if (mysqli_num_rows($q_tampil_buku) > 0) {
+            while ($r_tampil_buku = mysqli_fetch_array($q_tampil_buku)) {
+                if (empty($r_tampil_buku['foto']) or ($r_tampil_buku['foto'] == '-'))
+                    $foto = "buku-no-photo.png";
                 else
-                    $foto = $r_tampil_anggota['foto'];
+                    $foto = $r_tampil_buku['foto'];
         ?>
                 <tr>
                     <td style="text-align: center;"><?php echo $nomor; ?></td>
-                    <td><?php echo $r_tampil_anggota['idanggota']; ?></td>
-                    <td><?php echo $r_tampil_anggota['nama']; ?></td>
-                    <td style="text-align: center;"><img src="./images/<?php echo $foto; ?>" width="70px height=70px" alt=""></td>
-                    <td><?php echo $r_tampil_anggota['jeniskelamin']; ?></td>
-                    <td><?php echo $r_tampil_anggota['alamat']; ?></td>
+                    <td><?php echo $r_tampil_buku['idbuku']; ?></td>
+                    <td><?php echo $r_tampil_buku['judul']; ?></td>
+                    <td style="text-align: center;"><img src="./images/buku/<?php echo $foto; ?>" width="70px height=70px" alt=""></td>
+                    <td><?php echo $r_tampil_buku['pengarang']; ?></td>
+                    <td><?php echo $r_tampil_buku['penerbit']; ?></td>
+                    <td><?php echo $r_tampil_buku['tahun']; ?></td>
                     <td>
                         <div class="tombol-opsi-container">
-                            <a target="_blank" href="pages/cetak_kartu.php?id=<?php echo $r_tampil_anggota['idanggota']; ?>" class="tombol tombol-cetak">Cetak Kartu</a>
+                            <a style="font-size:16px;" href="index.php?p=buku-edit&id=<?php echo $r_tampil_buku['idbuku']; ?>" class="tombol tombol-edit">Edit</a>
                         </div>
                         <div class="tombol-opsi-container">
-                            <a href="index.php?p=anggota-edit&id=<?php echo $r_tampil_anggota['idanggota']; ?>" class="tombol tombol-edit">Edit</a>
-                        </div>
-                        <div class="tombol-opsi-container">
-                            <a href="proses/anggota-hapus-proses.php?id=<?php echo $r_tampil_anggota['idanggota']; ?>" class="tombol tombol-hapus" onclick="return confirm('Apakah Anda Yakin Akan Menghapus Data ini?')">Hapus</a>
+                            <a style="font-size:16px;" href="proses/buku-hapus-proses.php?id=<?php echo $r_tampil_buku['idbuku']; ?>" class="tombol tombol-hapus" onclick="return confirm('Apakah Anda Yakin Akan Menghapus Data ini?')">Hapus</a>
                         </div>
                     </td>
                 </tr>
@@ -108,7 +107,7 @@
             $jml_hal = ceil($jml / $batas);
             for ($i = 1; $i <= $jml_hal; $i++) {
                 if ($i != $hal) {
-                    echo "<a href=\"?p=anggota&hal=$i\">$i</a>";
+                    echo "<a href=\"?p=buku&hal=$i\">$i</a>";
                 } else {
                     echo "<a class=\"active\">$i</a>";
                 }
