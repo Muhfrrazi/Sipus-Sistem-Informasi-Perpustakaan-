@@ -28,7 +28,7 @@
         </tr>
         <tr>
             <td></td>
-            <td><input type="submit" value="simpan" name="simpan" class="tombol-simpan" style="cursor:pointer;">
+            <td><input type="submit" value="simpan" name="simpan" class="tombol-simpan" style="cursor:pointer;" onclick="return confirm('Apakah data sudah benar?')">
                 <a href="index.php?p=anggota" class="tombol-simpan" style="margin-left: 20px;">Kembali</a>
             <td></td>
         </tr>

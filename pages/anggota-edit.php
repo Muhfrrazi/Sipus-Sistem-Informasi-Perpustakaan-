@@ -56,7 +56,7 @@ if (empty($r_tampil_anggota['foto']) or ($r_tampil_anggota['foto'] == '-')) {
             </tr>
             <tr>
                 <td class="label-formulir"></td>
-                <td class="isian-formulir"><input type="submit" name="simpan" value="Simpan" id="tombol-simpan" class="tombol-simpan"></td>
+                <td class="isian-formulir"><input type="submit" name="simpan" value="Simpan" id="tombol-simpan" class="tombol-simpan" onclick="return confirm('Apakah data yang diubah sudah benar?')"></td>
         </table>
     </form>
 </div>
